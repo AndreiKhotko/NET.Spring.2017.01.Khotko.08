@@ -10,7 +10,7 @@ namespace Customer
     /// <summary>
     /// Class customer
     /// </summary>
-    public class Customer
+    public class Customer : IFormattable
     {
         /// <summary>
         /// Customer Name
@@ -37,19 +37,6 @@ namespace Customer
         }
 
         /// <summary>
-        /// Constructor with 3 parameters
-        /// </summary>
-        /// <param name="name">Name</param>
-        /// <param name="contactPhone">Contacct phone number</param>
-        /// <param name="revenue">Revenue</param>
-        public Customer(string name, string contactPhone, decimal revenue)
-        {
-            Name = name;
-            ContactPhone = contactPhone;
-            Revenue = revenue;
-        }
-
-        /// <summary>
         /// Override method ToString() which returns standart string representation of class Customers
         /// </summary>
         /// <returns>Customer string representation</returns>
@@ -62,22 +49,22 @@ namespace Customer
         /// ToString with format
         /// </summary>
         /// <param name="format">Format</param>
+        /// <param name="provider">Provider</param>
         /// <returns>Customer string representation</returns>
-        public string ToString(string format)
+        public string ToString(string format, IFormatProvider provider = null)
         {
             if (format == null)
-                throw new ArgumentNullException();
+                format = "G";
+
+            if (provider == null)
+                provider = CultureInfo.GetCultureInfo("en-US");
 
             string result = "Customer record: ";
-            //string x = string.Format("fasafa", 1);
-            string revenueString = string.Format(CultureInfo.GetCultureInfo("en-US"), "{0:C}", Revenue);
-
-            if (Revenue == 0)
-                revenueString = "Zero";    
+            string revenueString = string.Format(provider, "{0:C}", Revenue);
             
             switch (format.ToUpperInvariant())
             {
-                case "S":
+                case "G":
                     return result + $"{Name}, {revenueString}, {ContactPhone}";
 
                 case "N":
