@@ -42,7 +42,7 @@ namespace Customer
         /// <returns>Customer string representation</returns>
         public override string ToString()
         {
-            return ToString("S");
+            return ToString("G");
         }
 
         /// <summary>
