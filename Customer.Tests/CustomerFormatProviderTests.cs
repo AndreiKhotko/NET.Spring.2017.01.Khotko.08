@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using NUnit.Framework;
 
 namespace Customer.Tests
@@ -32,7 +29,12 @@ namespace Customer.Tests
         public string Format_TakesBadFormat_returnsStandartCustomerStringRepresentation(string format, string name, string phoneNumber,
             decimal revenue)
         {
-            customer = new Customer(name, phoneNumber, revenue);
+            customer = new Customer
+            {
+                Name = name,
+                Revenue = revenue,
+                ContactPhone = phoneNumber
+            };
 
             return provider.Format(format, customer, provider);
         }
@@ -42,7 +44,12 @@ namespace Customer.Tests
         public string Format_TakesFullInfoAttributesFormat_PositiveTest(string format, string name, string phoneNumber,
             decimal revenue)
         {
-            customer = new Customer(name, phoneNumber, revenue);
+            customer = new Customer
+            {
+                Name = name,
+                Revenue = revenue,
+                ContactPhone = phoneNumber
+            };
 
             return provider.Format(format, customer, provider);
         }
@@ -52,7 +59,12 @@ namespace Customer.Tests
         public string Format_TakesFullInfoUpperCaseFormat_PositiveTest(string format, string name, string phoneNumber,
             decimal revenue)
         {
-            customer = new Customer(name, phoneNumber, revenue);
+            customer = new Customer
+            {
+                Name = name,
+                Revenue = revenue,
+                ContactPhone = phoneNumber
+            };
 
             return provider.Format(format, customer, provider);
         }
@@ -62,7 +74,12 @@ namespace Customer.Tests
         public string Format_TakesFullInfoLowerCaseFormat_PositiveTest(string format, string name, string phoneNumber,
             decimal revenue)
         {
-            customer = new Customer(name, phoneNumber, revenue);
+            customer = new Customer
+            {
+                Name = name,
+                Revenue = revenue,
+                ContactPhone = phoneNumber
+            };
 
             return provider.Format(format, customer, provider);
         }
@@ -72,7 +89,12 @@ namespace Customer.Tests
         public string Format_TakesFairyTaleFormat_PositiveTest(string format, string name, string phoneNumber,
             decimal revenue)
         {
-            customer = new Customer(name, phoneNumber, revenue);
+            customer = new Customer
+            {
+                Name = name,
+                Revenue = revenue,
+                ContactPhone = phoneNumber
+            };
 
             return provider.Format(format, customer, provider);
         }
